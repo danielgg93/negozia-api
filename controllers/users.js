@@ -14,7 +14,7 @@ const create = async (req, res = response) => {
         let user = await User.findOne({ email });
 
         if (user) {
-            return res.status(400).json({
+            return res.status(200).json({
                 ok: false,
                 msg: 'Un usuario existe con ese correo'
             })
@@ -71,7 +71,7 @@ const update = async (req, res = response) => {
         const user = await User.findById(userId);
 
         if (!user) {
-            return res.status(400).json({
+            return res.status(200).json({
                 ok: false,
                 msg: ' Usuario no existe por ese id'
             })
@@ -84,7 +84,7 @@ const update = async (req, res = response) => {
 
         const userUpdate = await User.findByIdAndUpdate(userId, newUser, { new: true });
 
-        return res.json({
+        return res.status(200).json({
             ok: true,
             msg: userUpdate
         })

@@ -17,7 +17,7 @@ const loginUser = async (req, res = response) => {
         console.log(user)
 
         if (!user) {
-            return res.status(400).json({
+            return res.status(200).json({
                 ok: false,
                 msg: 'El usuario no existe con ese email'
             });
@@ -28,7 +28,7 @@ const loginUser = async (req, res = response) => {
         const validPassword = bcrypt.compareSync(password, user.password);
 
         if (!validPassword) {
-            return res.status(400).json({
+            return res.status(200).json({
                 ok: false,
                 msg: 'Password incorrecto'
             });
@@ -70,7 +70,10 @@ const revalidateToken = async(req, res = response) => {
 
     res.json({
         ok: true,
+        uid,
+        name,
         token
+        
         
     })
 }
