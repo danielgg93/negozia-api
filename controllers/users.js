@@ -32,7 +32,7 @@ const create = async (req, res = response) => {
 
         return res.status(201).json({
             ok: true,
-            msg: "El usuario es administrador",
+            msg: "Usuario creado",
             uid: user.id,
             name: user.name,
             role: user.role,
